@@ -174,6 +174,7 @@ func (repgen *reportGenerationState) messageObserve(msg MessageObserve, sender c
 // is over. It collates the signed observations it has received so far, and
 // sends out a request for participants' signatures on the final report.
 func (repgen *reportGenerationState) eventTGraceTimeout() {
+	repgen.logger.Info("eventTGraceTimeout() called", nil)
 	if repgen.leaderState.phase != phaseGrace {
 		repgen.logger.Error("leader's phase conflicts tGrace timeout", commontypes.LogFields{
 			"round": repgen.leaderState.r,
